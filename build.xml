@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<project name="treesub" default="dist" basedir=".">
+
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="build" />
+	<property name="dist.dir" location="dist" />
+	<property name="docs.dir" location="docs/api" />
+	<property name="libs.dir" location="lib" />
+
+	<path id="build.classpath">
+		<fileset dir="${libs.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${docs.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="makedir">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${docs.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="compile" depends="clean, makedir">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="build.classpath">
+		</javac>
+	</target>
+
+	<target name="docs" depends="compile">
+		<javadoc sourcepath="${src.dir}" destdir="${docs.dir}" Overview="etc/overview.html" classpathref="build.classpath">
+			<fileset dir="${src.dir}">
+				<include name="**" />
+			</fileset>
+		</javadoc>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="${dist.dir}\treesub.jar" basedir="${build.dir}">
+			<manifest>
+				<attribute name="Manifest-Version" value="1.0" />
+				<attribute name="Main-Class" value="treesub.gui.AnnotatorGUI" />
+			</manifest>
+
+			<zipgroupfileset dir="lib" includes="*.jar" />
+		</jar>
+	</target>
+
+	<target name="dist" depends="compile, jar">
+		<description>Build everything</description>
+	</target>
+
+</project>
+
