@@ -7,10 +7,10 @@
 
 This little tool glues together several other tools to allow a user to input a codon alignment in FASTA format and produce an annotated phylogenetic tree showing which substitutions occurred on a given branch. It uses the following tools and libraries:
 
-* **RAxML** is a program for sequential and parallel Maximum Likelihood based inference of large phylogenetic trees [[1]][^1]. 
-* **PAML** is a suite of software tools for phylogenetic analysis [[2]][^2]. We use it to estimate the branch lengths and infer the ancestral sequences.
+* **RAxML** is a program for sequential and parallel Maximum Likelihood based inference of large phylogenetic trees [1]. 
+* **PAML** is a suite of software tools for phylogenetic analysis [2]. We use it to estimate the branch lengths and infer the ancestral sequences.
 * **FigTree** is a graphical viewer of phylogenetic trees. The annotated tree can be opened in Figtree and the tree can be prepared (as close as is possible) as you would like for printing or further editing in a program like Adobe Illustrator.
-* Java libraries **PAL** [[3]][^3] and **BioJava** [[4]][^4] (among others) are used to read, manipulate and write alignment files and phylogenetic trees.
+* Java libraries **PAL** [3] and **BioJava** [4] (among others) are used to read, manipulate and write alignment files and phylogenetic trees.
 
 ![](https://raw.github.com/tamuri/treesub/master/docs/annotator_fig2.png)
 
@@ -55,12 +55,10 @@ Each time you have the tree as you like, you can export to PDF or a graphics ima
 
 ![](https://raw.github.com/tamuri/treesub/master/docs/annotator_fig3.png)
 
+## References
 
-[^1]: Stamatakis, A. 2006. RAxML-VI-HPC: Maximum Likelihood-based Phylogenetic Analyses with Thousands of Taxa and Mixed Models. Bioinformatics 22(21):2688–2690. 
-
-[^2]: Yang, Z. 2007. PAML 4: Phylogenetic Analysis by Maximum Likelihood. Molecular Biology and Evolution 24: 1586-1591.
-
-[^3]: Drummond, A., and K. Strimmer. 2001. PAL: An object-oriented program- ming library for molecular evolution and phylogenetics. Bioinformatics 17: 662-663.
-
-[^4]: R.C.G. Holland; T. Down; M. Pocock; A. Prlić; D. Huen; K. James; S. Foisy; A. Dräger; A. Yates; M. Heuer; M.J. Schreiber. 2008. BioJava: an Open- Source Framework for Bioinformatics. Bioinformatics 24 (18): 2096-2097.
+1. Stamatakis, A. 2006. RAxML-VI-HPC: Maximum Likelihood-based Phylogenetic Analyses with Thousands of Taxa and Mixed Models. Bioinformatics 22(21):2688–2690. 
+2. Yang, Z. 2007. PAML 4: Phylogenetic Analysis by Maximum Likelihood. Molecular Biology and Evolution 24: 1586-1591.
+3. Drummond, A., and K. Strimmer. 2001. PAL: An object-oriented programming library for molecular evolution and phylogenetics. Bioinformatics 17: 662-663.
+4. R.C.G. Holland; T. Down; M. Pocock; A. Prlić; D. Huen; K. James; S. Foisy; A. Dräger; A. Yates; M. Heuer; M.J. Schreiber. 2008. BioJava: an Open-Source Framework for Bioinformatics. Bioinformatics 24 (18): 2096-2097.
 
