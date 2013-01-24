@@ -10,7 +10,7 @@ This little tool glues together several other tools to allow a user to input a c
 * **RAxML** is a program for sequential and parallel Maximum Likelihood based inference of large phylogenetic trees [1]. 
 * **PAML** is a suite of software tools for phylogenetic analysis [2]. We use it to estimate the branch lengths and infer the ancestral sequences.
 * **FigTree** is a graphical viewer of phylogenetic trees. The annotated tree can be opened in Figtree and the tree can be prepared (as close as is possible) as you would like for printing or further editing in a program like Adobe Illustrator.
-* Java libraries **PAL** [3] and **BioJava** [4] (among others) are used to read, manipulate and write alignment files and phylogenetic trees.
+* Java libraries **PAL** [3] and **BioJava** [4], among others, are used to read, manipulate and write alignment files and phylogenetic trees.
 
 ![](https://raw.github.com/tamuri/treesub/master/docs/annotator_fig2.png)
 
