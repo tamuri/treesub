@@ -1,6 +1,6 @@
 # treesub: annotating ancestral substitutions on a tree
 
-![](docs/annotator_fig1.png?raw=true)
+![](https://raw.github.com/tamuri/treesub/master/docs/annotator_fig1.png)
 
 ## Introduction
 
@@ -12,7 +12,7 @@ This little tool glues together several other tools to allow a user to input a c
 * **FigTree** is a graphical viewer of phylogenetic trees. The annotated tree can be opened in Figtree and the tree can be prepared (as close as is possible) as you would like for printing or further editing in a program like Adobe Illustrator.
 * Java libraries **PAL**[^3] and **BioJava**[^4] (among others) are used to read, manipulate and write alignment files and phylogenetic trees.
 
-![](docs/annotator_fig2.png?raw=true)
+![](https://raw.github.com/tamuri/treesub/master/docs/annotator_fig2.png)
 
 
 ## Installation
@@ -53,7 +53,7 @@ You may find it useful to take a look at the list of your sequences in ‘align-
 
 Each time you have the tree as you like, you can export to PDF or a graphics image. If you export to PDF (or EPS) you can edit the result in Adobe Illustrator (or Inkscape).
 
-![](docs/annotator_fig3.png?raw=true)
+![](https://raw.github.com/tamuri/treesub/master/docs/annotator_fig3.png)
 
 
 [^1]: Stamatakis, A. 2006. RAxML-VI-HPC: Maximum Likelihood-based Phylo- genetic Analyses with Thousands of Taxa and Mixed Models. Bioinformatics 22(21):2688–2690. 
