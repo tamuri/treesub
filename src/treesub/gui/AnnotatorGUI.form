@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="treesub.gui.AnnotatorGUI">
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="619" height="336"/>
+    </constraints>
+    <properties>
+      <autoscrolls value="false"/>
+      <minimumSize width="500" height="250"/>
+      <preferredSize width="700" height="700"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="8516" binding="Centre" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="ccf0d" binding="scrollPane1">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="88367" class="javax.swing.JTextArea" binding="mainTextArea">
+                <constraints/>
+                <properties>
+                  <editable value="false"/>
+                  <font name="Monospaced" size="14"/>
+                  <lineWrap value="true"/>
+                  <rows value="30"/>
+                  <wrapStyleWord value="true"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <grid id="ceb77" binding="North" layout-manager="GridBagLayout">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="5ebfb" class="javax.swing.JTextField" binding="raxmlPath">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <columns value="25"/>
+            </properties>
+          </component>
+          <component id="6a8f2" class="javax.swing.JTextField" binding="pamlPath">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <columns value="25"/>
+            </properties>
+          </component>
+          <component id="87f35" class="javax.swing.JTextField" binding="alignmentPath">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <columns value="25"/>
+            </properties>
+          </component>
+          <component id="e2682" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="RAxML (raxmlHPC) path:"/>
+            </properties>
+          </component>
+          <component id="e023c" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="PAML (baseml) path:"/>
+            </properties>
+          </component>
+          <component id="67dad" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="FASTA alignment:"/>
+            </properties>
+          </component>
+          <component id="c8e9e" class="javax.swing.JButton" binding="raxmlPathButton">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <actionCommand value=""/>
+              <label value="Browse..."/>
+              <text value="Browse..."/>
+            </properties>
+          </component>
+          <component id="5b5d2" class="javax.swing.JButton" binding="pamlPathButton">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <actionCommand value="getPamlPath"/>
+              <text value="Browse..."/>
+            </properties>
+          </component>
+          <component id="7b484" class="javax.swing.JButton" binding="alignmentPathButton">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <actionCommand value="getAlignmentPath"/>
+              <text value="Browse..."/>
+            </properties>
+          </component>
+          <grid id="718b8" binding="actionPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="14e50" class="javax.swing.JButton" binding="runButton" default-binding="true">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <actionCommand value="doRun"/>
+                  <selected value="false"/>
+                  <text value="RUN"/>
+                </properties>
+                <clientProperties>
+                  <html.disable class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+              </component>
+              <component id="3728b" class="javax.swing.JButton" binding="reannotateButton">
+                <constraints border-constraint="East"/>
+                <properties>
+                  <enabled value="true"/>
+                  <foreground color="-16777216"/>
+                  <hideActionText value="false"/>
+                  <text value="Re-annotate"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
