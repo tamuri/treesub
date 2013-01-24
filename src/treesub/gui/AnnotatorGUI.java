@@ -23,7 +23,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Asif Tamuri (atamuri@nimr.mrc.ac.uk)
+ * @author tamuri@ebi.ac.uk
  */
 public class AnnotatorGUI {
     private JPanel mainPanel;

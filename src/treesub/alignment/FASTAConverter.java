@@ -13,7 +13,7 @@ import java.io.FileWriter;
 import java.util.Map;
 
 /**
- * @author Asif Tamuri (atamuri@nimr.mrc.ac.uk)
+ * @author tamuri@ebi.ac.uk
  *
  * This class takes a name of a file as argument and creates two files:
  *     file.names - this is the ordered list of sequence names (i.e. the '>' label of the FASTA file

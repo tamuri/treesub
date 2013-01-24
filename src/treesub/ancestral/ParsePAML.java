@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Asif Tamuri (atamuri@nimr.mrc.ac.uk)
+ * @author tamuri@ebi.ac.uk
  *
  * Takes the output of codeml or baseml that has used the RateAncestor=1 to perform ancestral state reconstruction.
  * Specifically, we need two trees and a list of substitutions along each branch from the 'rst' output file. These are

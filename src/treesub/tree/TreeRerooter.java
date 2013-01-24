@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 /**
- * @author Asif Tamuri (atamuri@nimr.mrc.ac.uk)
+ * @author tamuri@ebi.ac.uk
  *
  * The class is used to root the best tree found by RAxML using the outgroup sequence.
  * The outgroup sequence is always "seq_1" which is the first sequence in the original FASTA file.

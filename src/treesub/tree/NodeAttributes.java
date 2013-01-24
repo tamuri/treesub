@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @author Asif Tamuri (atamuri@nimr.mrc.ac.uk)
+ * @author tamuri@ebi.ac.uk
  *
  */
 public class NodeAttributes {

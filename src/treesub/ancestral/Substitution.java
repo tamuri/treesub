@@ -3,7 +3,7 @@ package treesub.ancestral;
 import com.google.common.base.Predicate;
 
 /**
- * @author Asif Tamuri (atamuri@nimr.mrc.ac.uk)
+ * @author tamuri@ebi.ac.uk
  *
  */
 public class Substitution {

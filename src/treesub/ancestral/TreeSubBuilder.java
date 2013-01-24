@@ -36,7 +36,7 @@ public class TreeSubBuilder {
     List<String> names;
     Map<Node, NodeAttributes> nodeAttributes = Maps.newHashMap();
 
-    public static void main(String[] args) throws Exception {
+/*    public static void main(String[] args) throws Exception {
         TreeSubBuilder b = new TreeSubBuilder();
         b.setDataType("CODONS");
         b.loadSequences("/Users/atamuri/Documents/work/111108 Tree Annotator for Div. of Virology/etc/examples/H3HASO-251111/treesub.alignment.raxml.phylip");
@@ -44,7 +44,7 @@ public class TreeSubBuilder {
         b.loadTree("/Users/atamuri/Documents/work/111108 Tree Annotator for Div. of Virology/etc/examples/H3HASO-251111/treesub.ancestral.tree");
         b.loadSequenceNames("/Users/atamuri/Documents/work/111108 Tree Annotator for Div. of Virology/etc/examples/H3HASO-251111/treesub.alignment.names");
         b.build();
-    }
+    }*/
 
     public void loadSequenceNames(String filename) throws Exception {
         this.names = Files.readLines(new File(filename), Charset.defaultCharset()) ;
@@ -160,8 +160,8 @@ public class TreeSubBuilder {
         }
 
         // Write out the NEXUS format tree
-        // BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
-        BufferedWriter out = new BufferedWriter(new FileWriter("/Users/atamuri/Documents/work/111108 Tree Annotator for Div. of Virology/etc/examples/H3HASO-251111/treesub.substitutions.tree"));
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+        //BufferedWriter out = new BufferedWriter(new FileWriter("/Users/atamuri/Documents/work/111108 Tree Annotator for Div. of Virology/etc/examples/H3HASO-251111/treesub.substitutions.tree"));
 
         out.write("#NEXUS\n");
         out.write("begin taxa;\n");
@@ -194,7 +194,7 @@ public class TreeSubBuilder {
 
         // table of substitutions
         String subFile = "/Users/atamuri/Documents/work/111108 Tree Annotator for Div. of Virology/etc/examples/H3HASO-251111/treesub.substitutions.csv";
-        // BufferedWriter subs_out = new BufferedWriter(new FileWriter());
+        //BufferedWriter subs_out = new BufferedWriter(new FileWriter());
         BufferedWriter subs_out = Files.newWriter(new File(subFile), Charsets.US_ASCII);
         subs_out.write("branch,site,codon_from,codon_to,aa_from,aa_to,string,non_synonymous\n");
         for (Map.Entry<String,List<Substitution>> e : substitutions.entrySet()) {

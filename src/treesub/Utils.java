@@ -24,7 +24,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author Asif Tamuri (atamuri@nimr.mrc.ac.uk)
+ * @author tamuri@ebi.ac.uk
  */
 public class Utils {
     /**
