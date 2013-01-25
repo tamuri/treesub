@@ -75,15 +75,6 @@ public class FASTAConverter {
         return String.format("Alignment has %s sequences, each with %s sites.", fasta.size(), fasta.values().iterator().next().getLength());
     }
 
-    public void convert(Map<String, String> sequence, String filename, String additionalHeader) throws Exception {
-
-    }
-
-    private void writeNames() {
-
-    }
-
-
     public static enum OUTPUT {
         RAXML, PAML
     }

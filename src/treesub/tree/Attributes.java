@@ -10,18 +10,18 @@ import java.util.List;
  * @author tamuri@ebi.ac.uk
  *
  */
-public class NodeAttributes {
-    HashMap<NodeAttributeKey, String> attributes = Maps.newHashMap();
+public class Attributes {
+    HashMap<Key, String> attributes = Maps.newHashMap();
 
-    public NodeAttributes(NodeAttributeKey nak, String s) {
+    public Attributes(Key nak, String s) {
         attributes.put(nak, s);
     }
 
-    public void add(NodeAttributeKey nak, String s) {
+    public void add(Key nak, String s) {
         attributes.put(nak, s);
     }
 
-    public String get(NodeAttributeKey nak) {
+    public String get(Key nak) {
         if (!attributes.containsKey(nak)) return "";
         return attributes.get(nak);
     }
@@ -36,7 +36,7 @@ public class NodeAttributes {
             return "";
         }
 
-        List<NodeAttributeKey> entries = Lists.newArrayList(attributes.keySet());
+        List<Key> entries = Lists.newArrayList(attributes.keySet());
 
         String s = String.format("[&%s=\"%s\"", entries.get(0).toString(), attributes.get(entries.get(0)));
 
@@ -50,7 +50,7 @@ public class NodeAttributes {
 
     }
 
-    public enum NodeAttributeKey {
+    public enum Key {
         REALNAME, ALLSUBS, NUMBER, NONSYNSUBS, FULL, NAME_AND_SUBS
     }
 }

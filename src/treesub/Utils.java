@@ -7,17 +7,17 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.common.io.Files;
 import com.google.common.primitives.Chars;
-import org.biojava3.core.sequence.DNASequence;
-import org.biojava3.core.sequence.ProteinSequence;
 import org.biojava3.core.sequence.template.AbstractSequence;
-import pal.alignment.Alignment;
 import pal.datatype.CodonTableFactory;
 import pal.datatype.Codons;
 import pal.io.FormattedOutput;
 import pal.tree.Node;
-import treesub.tree.NodeAttributes;
+import treesub.tree.Attributes;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -96,7 +96,7 @@ public class Utils {
     }
 
     // Lifted from PAL source code, so we can output NEXUS style trees with annotations (for Figtree)
-    public static void printNH(PrintWriter out, Node node, Map<Node, NodeAttributes> nodeAttributes) {
+    public static void printNH(PrintWriter out, Node node, Map<Node, Attributes> nodeAttributes) {
         if (!node.isLeaf()) {
             out.print("(");
 
@@ -114,7 +114,7 @@ public class Utils {
         if (!node.isRoot()) {
             if (node.isLeaf()) {
                 // String id = node.getIdentifier().toString();
-                String id = nodeAttributes.get(node).get(NodeAttributes.NodeAttributeKey.REALNAME);
+                String id = nodeAttributes.get(node).get(Attributes.Key.REALNAME);
                 out.print("'" + id + "'");
             } else {
                 if (nodeAttributes.get(node).size() > 0) {
@@ -143,54 +143,5 @@ public class Utils {
             .build();
 
     private static final Set<Character> IUPAC_ALL_AMBIGUOUS = IUPAC_AMBIGUOUS_LOOKUP.keySet();
-
-
-    public static Map<String,String> castSequence(Map<String, ?> sequence) {
-        Map<String, String> plainSequence = Maps.newLinkedHashMap();
-
-        for (Map.Entry<String, ?> e : sequence.entrySet()) {
-            plainSequence.put(e.getKey(), ((AbstractSequence<?>) e.getValue()).getSequenceAsString());
-        }
-
-        return plainSequence;
-    }
-
-    public static void writeList(Collection<String> entries, File file) {
-        try {
-            BufferedWriter writer = Files.newWriter(file, Charsets.US_ASCII);
-            for (String s : entries) {
-                writer.write(s);
-                writer.newLine();
-            }
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } 
-    }
-
-    public static void writePhylipAlignment(Map<String, String> alignment, File file, String header) {
-        try {
-            BufferedWriter writer = Files.newWriter(file, Charsets.US_ASCII);
-            writer.write(alignment.size() + " " + alignment.values().iterator().next().length());
-
-            if (header != null) {
-                writer.write(" " + header);
-            }
-
-            writer.newLine();
-
-            int sequenceCount = 1;
-            for (Map.Entry<String, String> e : alignment.entrySet()) {
-                writer.write(String.format("seq_%s      %s", sequenceCount++, e.getValue()));
-                writer.newLine();
-            }
-
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 
 }

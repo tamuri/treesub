@@ -6,8 +6,9 @@ import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 import com.google.common.io.LineProcessor;
 import org.apache.commons.io.FileUtils;
-import treesub.ancestral.ParsePAML;
+import treesub.Constants;
 import treesub.alignment.FASTAConverter;
+import treesub.ancestral.ParseRST;
 import treesub.tree.TreeRerooter;
 
 import javax.swing.*;
@@ -42,42 +43,33 @@ public class AnnotatorGUI {
     private JButton reannotateButton;
     private static JFrame frame;
 
-    private static String PROPERTIES_FILENAME = "annotator.properties";
-    private static String RAXML_PATH_PROPERTY = "RAXML_PATH";
-    private static String PAML_PATH_PROPERTY = "PAML_PATH";
-    private static String RAXML_OPTIONS_PROPERTY = "RAXML_OPTIONS";
-    private static String DEFAULT_PATH_PROPERTY = "DEFAULT_PATH";
-    private static String RAXML_DEFAULT_OPTIONS = "-m GTRGAMMA -T 2 -# 10";
-
     private Properties properties = new Properties();
-    private static List<String> FILES_TO_CHECK = Lists.newArrayList("alignment", "alignment.names", "alignment.raxml.phylip",
-            "alignment.paml.phylip", "RAxML_bestTree.RECON", "RAxML_bestTree.RECON.rooted", "pamlout", "rst");
 
     public AnnotatorGUI() {
         try {
-            properties.load(new FileInputStream(PROPERTIES_FILENAME));
+            properties.load(new FileInputStream(Constants.PROPERTIES_FILENAME));
         } catch (IOException e) {
             // Assume file not found
-            properties.setProperty(RAXML_PATH_PROPERTY, "");
-            properties.setProperty(PAML_PATH_PROPERTY, "");
-            properties.setProperty(DEFAULT_PATH_PROPERTY, ".");
-            properties.setProperty(RAXML_OPTIONS_PROPERTY, RAXML_DEFAULT_OPTIONS);
+            properties.setProperty(Constants.RAXML_PATH_PROPERTY, "");
+            properties.setProperty(Constants.PAML_PATH_PROPERTY, "");
+            properties.setProperty(Constants.DEFAULT_PATH_PROPERTY, ".");
+            properties.setProperty(Constants.RAXML_OPTIONS_PROPERTY, Constants.RAXML_DEFAULT_OPTIONS);
         }
 
         // These three buttons are simple file select dialogs
         raxmlPathButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                getAndSetFile(raxmlPath, RAXML_PATH_PROPERTY, null);
+                getAndSetFile(raxmlPath, Constants.RAXML_PATH_PROPERTY, null);
             }
         });
         pamlPathButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                getAndSetFile(pamlPath, PAML_PATH_PROPERTY, null);
+                getAndSetFile(pamlPath, Constants.PAML_PATH_PROPERTY, null);
             }
         });
         alignmentPathButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                getAndSetFile(alignmentPath, DEFAULT_PATH_PROPERTY, properties.getProperty(DEFAULT_PATH_PROPERTY));
+                getAndSetFile(alignmentPath, Constants.DEFAULT_PATH_PROPERTY, properties.getProperty(Constants.DEFAULT_PATH_PROPERTY));
                 if (alignmentPath.getText().length() > 0) {
                     runButton.setEnabled(true);
                     reannotateButton.setEnabled(true);
@@ -103,7 +95,7 @@ public class AnnotatorGUI {
 
                     // Check the the analysis has been reroot
                     boolean ranAnalysis = true;
-                    for (String f : FILES_TO_CHECK) {
+                    for (String f : Constants.FILES_TO_CHECK) {
                         if (!new File(workingDir + "/" + f).exists()) {
                             publish("File '" + f + "' not found in '" + workingDir + "'.\n");
                             ranAnalysis = false;
@@ -112,7 +104,7 @@ public class AnnotatorGUI {
 
                     if (ranAnalysis) {
                         publish("Parsing PAML results and building tree for substitutions.\n");
-                        ParsePAML pp = new ParsePAML();
+                        ParseRST pp = new ParseRST();
                         pp.run(workingDir);
                         publish("Succesfully parsed PAML results.\n\n");
                     } else {
@@ -156,15 +148,15 @@ public class AnnotatorGUI {
         DefaultCaret caret = (DefaultCaret) mainTextArea.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
-        raxmlPath.setText(properties.getProperty(RAXML_PATH_PROPERTY));
-        pamlPath.setText(properties.getProperty(PAML_PATH_PROPERTY));
+        raxmlPath.setText(properties.getProperty(Constants.RAXML_PATH_PROPERTY));
+        pamlPath.setText(properties.getProperty(Constants.PAML_PATH_PROPERTY));
     }
 
     public static void main(String[] args) {
         frame = new JFrame("AnnotatorGUI");
         AnnotatorGUI ag = new AnnotatorGUI();
         frame.setContentPane(ag.mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
@@ -197,7 +189,7 @@ public class AnnotatorGUI {
     private void saveProperty(String property, String s) {
         properties.setProperty(property, s);
         try {
-            properties.store(new FileOutputStream(PROPERTIES_FILENAME), null);
+            properties.store(new FileOutputStream(Constants.PROPERTIES_FILENAME), null);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -346,7 +338,7 @@ public class AnnotatorGUI {
 
             // STEP 0: This directory should be empty - we don't want to overwrite files.
             boolean foundRunFiles = false;
-            for (String f : FILES_TO_CHECK) {
+            for (String f : Constants.FILES_TO_CHECK) {
                 if (new File(workingDir + "/" + f).exists()) {
                     mainTextArea.append(String.format("'%s' already exists in directory '%s'.\n", f, workingDir));
                     foundRunFiles = true;
@@ -406,7 +398,7 @@ public class AnnotatorGUI {
                 publish("[3/6] Running RAxML application. Output from RAxML:\n");
 
                 Process raxmlProcess;
-                List<String> raxmlOptions = Lists.newArrayList(Splitter.on(" ").split(properties.getProperty(RAXML_OPTIONS_PROPERTY)));
+                List<String> raxmlOptions = Lists.newArrayList(Splitter.on(" ").split(properties.getProperty(Constants.RAXML_OPTIONS_PROPERTY)));
                 raxmlOptions.addAll(Lists.newArrayList("-s", "alignment.raxml.phylip", "-n", "RECON"));
                 raxmlOptions.add(0, raxmlPath.getText());
 
@@ -416,7 +408,7 @@ public class AnnotatorGUI {
                             // "c:\\cygwin\\bin\\bash.exe", "-li", "/cygdrive/c/cygwin/bin/unbuffer",
                             // "cmd.exe", "/c", "start", "cmd.exe", "/k", "\"",
                             raxmlPath.getText(), // RAxML executable path
-                            "-s", "alignment.raxml.phylip", "-n", "RECON", properties.getProperty(RAXML_OPTIONS_PROPERTY) // RAxML options
+                            "-s", "alignment.raxml.phylip", "-n", "RECON", properties.getProperty(Constants.RAXML_OPTIONS_PROPERTY) // RAxML options
                             , "\""
                     ).start();
                     publish("(You're running on Windows. No real-time output available!)\n");
@@ -476,7 +468,7 @@ public class AnnotatorGUI {
 
                 // STEP 6: Parse PAML results for tree and ancestral states and write annotated tree *******************
                 publish("[6/6] Parsing PAML results and building tree for substitutions.\n");
-                ParsePAML pp = new ParsePAML();
+                ParseRST pp = new ParseRST();
                 pp.run(this.workingDir);
                 publish("Succesfully parsed PAML results.\n\n");
 
