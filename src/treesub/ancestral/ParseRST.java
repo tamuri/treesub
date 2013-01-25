@@ -41,6 +41,7 @@ public class ParseRST {
     }
 
     public void run(String f) throws  Exception{
+        // TODO: What is they haven't run treesub and just parsing PAML?!
         loadRealNames(f + "/" + Constants.ALIGNMENT_NAMES);
 
         seqs = getSequences(f + "/" + Constants.PAML_RECONSTRUCTION_FILE);
