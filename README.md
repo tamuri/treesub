@@ -121,7 +121,7 @@ If you already have run PAML analysis, you can run the following to create `subs
 
 ## Acknowledgements
 
-Thanks to John McCauley and Vicki Gregory for feedback and ideas for improvement.
+Thanks to Mario dos Reis, John McCauley and Vicki Gregory for feedback and ideas for improvement.
 
 ## References
 
