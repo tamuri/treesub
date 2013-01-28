@@ -115,7 +115,7 @@ etc.
 
 ## Tips/Tricks
 
-If you already have run PAML analysis, you can run the following to create `substitutions.tree` and `substitutions.tsv` files. You need to have run PAML with the appropriate options.
+If you already have run PAML analysis, you can run the following to create `substitutions.tree` and `substitutions.tsv` files. You need to have run PAML with the appropriate options. For example, if the `rst` file is in `/path/to/paml/results` run:
 
 ``java -cp dist/treesub.jar treesub.ancestral.ParseRST /path/to/paml/results``
 
