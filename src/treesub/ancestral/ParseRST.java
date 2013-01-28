@@ -27,7 +27,7 @@ import java.util.Set;
  **/
 public class ParseRST {
 
-    private List<String> names;
+    private List<String> names = Lists.newArrayList();
     private Map<String, List<String>> seqs;
     private Tree[] trees;
 
@@ -51,8 +51,11 @@ public class ParseRST {
         writeResults(f);
     }
 
-    private void loadRealNames (String f) throws  Exception{
-        names = Files.readLines(new File(f), Charset.defaultCharset()) ;
+    private void loadRealNames (String f) throws Exception {
+        File nameFile = new File(f);
+        if (nameFile.exists()) {
+            names = Files.readLines(new File(f), Charset.defaultCharset());
+        }
     }
 
     private void traverse(Node n) {
@@ -132,7 +135,7 @@ public class ParseRST {
     private Attributes getAttributes(Node node, List<Substitution> substitutions) {
 
         String name;
-        if (node.isLeaf()) {
+        if (node.isLeaf() && names.size() > 0) {
             name = names.get(Integer.parseInt(getSequenceKey(node).split("_")[1]) - 1);
         } else {
             name = getSequenceKey(node);
