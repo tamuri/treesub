@@ -119,10 +119,15 @@ If you already have run PAML analysis, you can run the following to create `subs
 
 ``java -cp dist/treesub.jar treesub.ancestral.ParseRST /path/to/paml/results``
 
+## Acknowledgements
+
+Thanks to John McCauley and Vicki Gregory for feedback and ideas for improvement.
+
 ## References
 
 1. Stamatakis, A. 2006. RAxML-VI-HPC: Maximum Likelihood-based Phylogenetic Analyses with Thousands of Taxa and Mixed Models. Bioinformatics 22(21):2688–2690. 
 2. Yang, Z. 2007. PAML 4: Phylogenetic Analysis by Maximum Likelihood. Molecular Biology and Evolution 24: 1586-1591.
 3. Drummond, A., and K. Strimmer. 2001. PAL: An object-oriented programming library for molecular evolution and phylogenetics. Bioinformatics 17: 662-663.
 4. R.C.G. Holland; T. Down; M. Pocock; A. Prlić; D. Huen; K. James; S. Foisy; A. Dräger; A. Yates; M. Heuer; M.J. Schreiber. 2008. BioJava: an Open-Source Framework for Bioinformatics. Bioinformatics 24 (18): 2096-2097.
+
 
