@@ -14,7 +14,7 @@ public class Constants {
     public static final String PAML_PATH_PROPERTY = "PAML_PATH";
     public static final String RAXML_OPTIONS_PROPERTY = "RAXML_OPTIONS";
     public static final String DEFAULT_PATH_PROPERTY = "DEFAULT_PATH";
-    public static final String RAXML_DEFAULT_OPTIONS = "-m GTRGAMMA -T 2 -# 10";
+    public static final String RAXML_DEFAULT_OPTIONS = "-m GTRGAMMA -T 2 -# 10 -p 12345";
     public static final List<String> FILES_TO_CHECK = Lists.newArrayList("alignment", ALIGNMENT_NAMES, "alignment.raxml.phylip",
             "alignment.paml.phylip", "RAxML_bestTree.RECON", "RAxML_bestTree.RECON.rooted", "pamlout", PAML_RECONSTRUCTION_FILE);
     public static final String OUTGROUP_SEQUENCE_NAME = "seq_1";
